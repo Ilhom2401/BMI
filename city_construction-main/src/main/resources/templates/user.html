@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ishonch</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" th:href="@{/images/apple-touch-icon.png}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- All css files are included here. -->
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Owl Carousel  main css -->
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" th:href="@{/css/core.css}">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" th:href="@{/css/shortcode/shortcodes.css}">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- User style -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+
+
+    <!-- Modernizr JS -->
+    <script th:src="@{/js/vendor/modernizr-2.8.3.min.js}"></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Start Header Top -->
+    <div class="htc__header__top bg__cat--1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <ul class="heaher__top__left">
+                        <li><i class="fa fa-clock-o"></i>7.30 AM - 9.30 PM</li>
+                        <li><a href="#"><i class="fa fa-phone"></i>(+998)900945229</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <div class="header__top__right">
+                        <ul class="login-register">
+                            <li><a href="/login">Kirish</a></li>
+                            <li class="separator">/</li>
+                            <li><a href="login">Ro'yhatdan o'tish</a></li>
+                        </ul>
+                        <div class="heaher__top__btn">
+                            <!-- <a href="#">Buy Now</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header Top -->
+    <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-6 col-xs-7">
+                    <div class="logo">
+                        <a href="#">
+                            <img th:src="@{/images/logo/sinply-construction.png}" alt="logo image">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-5">
+                    <nav class="main__menu__nav  hidden-xs hidden-sm">
+                        <ul class="main__menu">
+                            <li><a href="/about">Biz haqimizda</a></li>
+                            <li><a href="/service">Hizmatlar</a></li>
+                            <li><a href="/projects">Loyihalar</a></li>
+                            <li><a href="/news">Yangiliklar</a></li>
+                            <li><a href="/contact">Bog'lanish</a></li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu clearfix visible-xs visible-sm">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                <li><a href="/about">Biz haqimizda</a></li>
+                                <li><a href="/service">Hizmatlar</a></li>
+                                <li><a href="/projects">Loyihalar</a></li>
+                                <li><a href="/news">Yangiliklar</a></li>
+                                <li><a href="/contact">Bog'lanish</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="card-header text-white text-center bg-secondary "><h2 class="text-white">Employee Info</h2></div>
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="col-6">
+                        <label for="f">FirstName</label>
+                        <input disabled class="form-control mb-2" id="f" th:value="${employee.getFirstName()}" th:placeholder="FirstName"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="l">LastName</label>
+                        <input disabled class="form-control mb-2" id="l" th:value="${employee.getLastName()}" th:placeholder="LastName"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="a">Address</label>
+                        <input disabled class="form-control mb-2" id="a" th:value="${employee.getAddress()}" th:placeholder="Address"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="b">BirthDate</label>
+                        <input disabled class="form-control mb-2" id="b" th:value="${employee.getBirthDate()}" th:placeholder="BirthDate"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="p">Phone</label>
+                        <input disabled class="form-control mb-2" id="p" th:value="${employee.getPhoneNumber()}" th:placeholder="Phone"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="e">Position</label>
+                        <input disabled class="form-control mb-2" id="e" th:value="${employee.getEmployeePosition().getName()}" placeholder="Position"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="e1">Salary</label>
+                        <input disabled class="form-control mb-2" id="e1" th:value="${employee.getSalary().getSalary()}"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="e2">Contract start-date</label>
+                        <input disabled class="form-control mb-2" id="e2" th:value="${employee.getSalary().getContractStartDate()}"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="e3">Contract end-date</label>
+                        <input disabled class="form-control mb-2" id="e3" th:value="${employee.getSalary().getContractEndDate()}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

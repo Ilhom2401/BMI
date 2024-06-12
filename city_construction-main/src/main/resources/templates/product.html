@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Products</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/admin/assets/favicon.ico" />
+    <!--    <link rel="stylesheet" href="/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/admin/css/styles.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" th:href="@{/images/apple-touch-icon.png}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- All css files are included here. -->
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Owl Carousel  main css -->
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" th:href="@{/css/core.css}">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" th:href="@{/css/shortcode/shortcodes.css}">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- User style -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+
+
+    <!-- Modernizr JS -->
+    <script th:src="@{/js/vendor/modernizr-2.8.3.min.js}"></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- End Header Top -->
+    <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-6 col-xs-7">
+                    <div class="logo">
+                        <a href="#">
+                            <img th:src="@{/images/logo/sinply-construction.png}" alt="logo image">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-5">
+                    <nav class="main__menu__nav  hidden-xs hidden-sm">
+                        <ul class="main__menu">
+                            <li><a href="/about">Biz haqimizda</a></li>
+                            <li><a href="/service">Hizmatlar</a></li>
+                            <li><a href="/projects">Loyihalar</a></li>
+                            <li><a href="/news">Yangiliklar</a></li>
+                            <li><a href="/contact">Bog'lanish</a></li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu clearfix visible-xs visible-sm">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                <li><a href="/about">Biz haqimizda</a></li>
+                                <li><a href="/service">Hizmatlar</a></li>
+                                <li><a href="/projects">Loyihalar</a></li>
+                                <li><a href="/news">Yangiliklar</a></li>
+                                <li><a href="/contact">Bog'lanish</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+<!--    <div class="border-end bg-white" id="sidebar-wrapper">-->
+<!--        &lt;!&ndash;        <div class="sidebar-heading border-bottom bg-light">Admin-page</div>&ndash;&gt;-->
+<!--        <form action="/get-employees" method="post">-->
+<!--            <button type="submit" name="userId" th:value="${empId}" class="list-group-item list-group-item-action list-group-item-light p-3" style="margin-right: 160px" href="#!">Employees</button>-->
+<!--        </form>-->
+<!--        <form action="/get-projects" method="post">-->
+<!--            <button type="submit" name="userId" th:value="${empId}" class="list-group-item list-group-item-action list-group-item-light p-3" style="margin-right: 160px" href="#!">Projects</button>-->
+<!--        </form>-->
+<!--    </div>-->
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="col-lg-12">
+                <h2 class="text-center" th:text="${projectName} + ' Maxsulotlar jadvali'"></h2>
+                <div class="card-header m-lg-auto">
+                    <form action="/add-product" method="post">
+                        <button type="submit" th:value="${empId}" name="userId" class="btn btn-secondary">Add product</button>
+                    </form>
+                </div>
+                <table class="table table-dark table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>CreatedDate</th>
+                        <th>CreatedBy</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product,count: ${list}">
+                        <td th:text="${count.count}"></td>
+                        <td th:text="${product.getName()}"></td>
+                        <td th:text="${product.getCreatedDate()}"></td>
+                        <td th:text="${product.getCreatedBy().getFirstName()}"></td>
+                        <td th:text="${product.getQuantity()}"></td>
+                        <td th:text="${product.getUnit().getName()}"></td>
+                        <td class="d-flex justify-content-center">
+                            <form action="/edit-product" method="post" th:if="${!product.isOver()}">
+                                <input type="hidden" name="productId" th:value="${product.getId()}"/>
+                                <input type="hidden" name="userId" th:value="${empId}"/>
+                                <button class="btn btn-warning ml-2" type="submit" data-toggle="modal"
+                                        data-target=".bd-example-modal-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-pen" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                    </svg>
+                                    Spend
+                                </button>
+                            </form>
+                           <button class="btn-danger btn" disabled th:if="${product.isOver()}">Product over</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/admin/js/scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
